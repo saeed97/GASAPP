@@ -20,5 +20,8 @@ The current or the first version is to test the following:
 - Visulizing data
 
 The following is the first try:
-	[![GAS](image.png)]()
+
+	[![GAS](app/image.png)]()
+	
+	[![GAS2](image.png)]()
 	
