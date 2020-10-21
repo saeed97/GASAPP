@@ -20,6 +20,7 @@ The current or the first version is to test the following:
 - Sending commands
 - Clearing data
 - Visualizing data
+NOTE: it is not working yet, and the ardunio is needed to test uploading data fist. 
 
 The following is the first try:
 
