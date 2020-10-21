@@ -11,17 +11,17 @@ To start set up the environment, you need to install some IDE for the Andriod de
 		[![Android Studio](https://developer.android.com//studio/images/studio-homepage-hero.jpg)](https://www.youtube.com/watch?v=Ob4vSoWud9k)
 
 
-## Intial Design Setup
+## Initial Design Setup
 The current or the first version is to test the following:
 - Connecting devices
 - Uploading data
 - Sending commands
 - Clearing data
-- Visulizing data
+- Visualizing data
 
 The following is the first try:
 
-	[![GAS](app/image.png)]()
+[![GAS](app/image.png)]() [![GAS2](image.png)]()
+
 	
-	[![GAS2](image.png)]()
 	
