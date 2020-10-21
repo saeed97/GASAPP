@@ -1,6 +1,7 @@
 # GASAPP
 GAS Android Application 
-Moe >>> I am using windows
+
+- Moe >>> I am using windows
 
 
 ## Setup
