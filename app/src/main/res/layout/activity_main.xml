@@ -1,97 +1,39 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/buttonStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="0dp"
-        android:onClick="onClickStart"
-        android:text="Begin" />
 
-    <Button
-        android:id="@+id/buttonSend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="-1dp"
-        android:layout_toEndOf="@+id/buttonStart"
-        android:layout_toRightOf="@+id/buttonStart"
-        android:onClick="onClickSend"
-        android:text="Send" />
-
-    <Button
-        android:id="@+id/buttonStop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText"
-        android:layout_marginStart="7dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="-2dp"
-        android:layout_toEndOf="@+id/buttonSend"
-        android:layout_toRightOf="@+id/buttonSend"
-        android:onClick="onClickStop"
-        android:text="Stop" />
-
-    <Button
-        android:id="@+id/buttonClear"
-        android:layout_width="88dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText"
-        android:layout_marginStart="13dp"
-        android:layout_marginLeft="13dp"
-        android:layout_marginTop="-1dp"
-        android:layout_toEndOf="@+id/buttonStop"
-        android:layout_toRightOf="@+id/buttonStop"
-        android:onClick="onClickClear"
-        android:text="Clear" />
-
-    <EditText
-        android:id="@+id/editText"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
-        android:background="#E91E63"
-        android:text="GAS"
-        android:textColor="#FFFFFF" />
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.GAS.AppBarOverlay">
 
-    <TextView
-        android:id="@+id/textView"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#E91E63"
+            app:popupTheme="@style/Theme.GAS.PopupOverlay"
+
+            app:subtitle="@string/app_name"
+            />
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
-        android:layout_height="750dp"
-        android:layout_below="@+id/buttonSend"
-        android:layout_alignEnd="@+id/editText"
-        android:layout_alignRight="@+id/editText"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:backgroundTint="#E91E63"
+        app:srcCompat="@android:drawable/ic_dialog_email" />
 
 
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="-5dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginBottom="-4dp"
-        android:background="#FBE7EE" />
+    <include layout="@layout/content_main" />
 
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
