@@ -12,12 +12,12 @@
 
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="next">Uploading a New Session</string>
+    <string name="next">Upload a New Session</string>
     <string name="second">View Sessions Analysis</string>
-    <string name="previous">Back>></string>
+    <string name="previous">Back</string>
     <string name="Begin">Connect Devices</string>
-    <string name="send">Uploading</string>
-    <string name="stop">Disconect</string>
+    <string name="send">Upload</string>
+    <string name="stop">Disconnect</string>
     <string name="hello_first_fragment">Welcome to GAS App!</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

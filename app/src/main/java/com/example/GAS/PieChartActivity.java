@@ -24,7 +24,6 @@ public class PieChartActivity extends AppCompatActivity {
         PieChart pieChart = findViewById(R.id.piechart);
 
         ArrayList<Entry> NoOfEmp = new ArrayList<Entry>();
-
         NoOfEmp.add(new Entry(945f, 0));
         NoOfEmp.add(new Entry(1040f, 1));
         NoOfEmp.add(new Entry(1133f, 2));

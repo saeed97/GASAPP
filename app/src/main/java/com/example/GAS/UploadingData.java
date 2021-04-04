@@ -13,6 +13,7 @@ package com.example.GAS;
         import android.hardware.usb.UsbDeviceConnection;
         import android.hardware.usb.UsbManager;
         import android.os.Bundle;
+        import android.preference.PreferenceManager;
         import android.util.Log;
         import android.view.View;
         import android.widget.Button;
@@ -25,7 +26,7 @@ package com.example.GAS;
         import java.io.UnsupportedEncodingException;
         import java.util.HashMap;
         import java.util.Map;
-
+        import android.content.SharedPreferences;
 public class UploadingData extends Activity {
     public final String ACTION_USB_PERMISSION = "com.hariharan.arduinousb.USB_PERMISSION";
     Button startButton, sendButton, clearButton, stopButton, back;
@@ -35,19 +36,103 @@ public class UploadingData extends Activity {
     UsbDevice device;
     UsbSerialDevice serialPort;
     UsbDeviceConnection connection;
+    String data = null;
+    char data2 = 'u';
 
+    SharedPreferences sharedpreferences;
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String stepCount = "stepCount" ;
+    public static final String stepWidth = "stepWidth" ;
+    public static final String sessionTime = "sessionTime" ;
+    public static final String rightArmCount = "rightArmCount" ;
+    public static final String leftArmCount = "leftArmCount" ;
+    public static volatile byte[] arg1 = null;
+    public static volatile String prevData = "wow";
+    String sc, sw, st, ra, la;
+    public static int []variables={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+      static int counter = 0;
+    Context context = this;
+    static boolean start = false;
+    static boolean stop = false;
+    static String number = "";
+    static int numCounter = 0 ;
     UsbSerialInterface.UsbReadCallback mCallback = new UsbSerialInterface.UsbReadCallback() { //Defining a Callback which triggers whenever data is read.
+
         @Override
         public void onReceivedData(byte[] arg0) {
-            String data = null;
+
             try {
+                int intValue = 0;
                 data = new String(arg0, "UTF-8");
-                data.concat("/n");
-                tvAppend(textView, data);
+
+                //byte[] dataByte = "stepCount:".getBytes("UTF-8");
+
+                //data.concat("/n");
+                try {
+//                    if (data == "s"){  //start recieving data
+//                        tvAppend(textView, "starttt");
+//                        start = true;
+//                    }
+//                    else if (data == "p"){
+//                        tvAppend(textView, "stoppp");
+//                        start = false;
+//                        intValue= Integer.parseInt(number);
+//                        number="";
+//                    }
+//                    else{
+//                        intValue =  Integer.parseInt(data);
+//                        tvAppend(textView, "good");
+//                        if (start == true){
+//                            tvAppend(textView, "add");
+//
+//                            number = number + data;
+//                            intValue=0;
+//                        }
+//
+//                    }
+
+
+                    intValue= Integer.parseInt(data);
+                    if (intValue>=0){
+                        tvAppend(textView, data);
+
+                        if (counter >=15){
+
+                            tvAppend(textView, "DONE!!!/n");
+                            ra = data;
+
+//                           SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+//                           SharedPreferences.Editor editor = preferences.edit();
+
+
+
+                            sharedpreferences = getSharedPreferences("MyPrefs", 0);
+                            SharedPreferences.Editor editor = sharedpreferences.edit();
+                            editor.putString(stepCount, String.valueOf(variables[0] *100 + variables[1] *10 + variables[2]));
+                            editor.putString(stepWidth, String.valueOf(variables[3] *100 + variables[4] *10+ variables[5]));
+                            editor.putString(sessionTime, String.valueOf(variables[6]*100  + variables[7]*10 + variables[8]));
+                            editor.putString(leftArmCount, String.valueOf(variables[9] *100 + variables[10] *10 + variables[11]));
+                            editor.putString(rightArmCount, String.valueOf(variables[12] *100 + variables[13]*10 + variables[14]));
+                            boolean val = editor.commit();
+
+                            tvAppend(textView, String.valueOf(variables[0]));
+                            tvAppend(textView, String.valueOf(val));
+                            counter=0;
+                        }
+                        variables[counter] = intValue;
+                        counter = counter + 1;
+
+                    }
+
+                } catch (NumberFormatException e) {
+
+                    arg1 = arg0;
+
+                    tvAppend(textView, data);
+                }
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
-
 
         }
     };
@@ -62,13 +147,13 @@ public class UploadingData extends Activity {
                     if (serialPort != null) {
                         if (serialPort.open()) { //Set Serial Connection Parameters.
                             setUiEnabled(true);
-                            serialPort.setBaudRate(9600);
+                            serialPort.setBaudRate(115200);
                             serialPort.setDataBits(UsbSerialInterface.DATA_BITS_8);
                             serialPort.setStopBits(UsbSerialInterface.STOP_BITS_1);
                             serialPort.setParity(UsbSerialInterface.PARITY_NONE);
                             serialPort.setFlowControl(UsbSerialInterface.FLOW_CONTROL_OFF);
                             serialPort.read(mCallback);
-                            tvAppend(textView,"Serial Connection Opened!\n");
+                            tvAppend(textView,"Serial connection opened!\n");
 
                         } else {
                             Log.d("SERIAL", "PORT NOT OPEN");
@@ -129,7 +214,7 @@ public class UploadingData extends Activity {
             for (Map.Entry<String, UsbDevice> entry : usbDevices.entrySet()) {
                 device = entry.getValue();
                 int deviceVID = device.getVendorId();
-                if (deviceVID == 0x1A86)//Arduino Vendor ID
+                if (deviceVID == 0x2341)//Arduino Vendor ID
                 {
                     PendingIntent pi = PendingIntent.getBroadcast(this, 0, new Intent(ACTION_USB_PERMISSION), 0);
                     usbManager.requestPermission(device, pi);
@@ -145,7 +230,7 @@ public class UploadingData extends Activity {
             }
         }
         else {
-            tvAppend(textView, "\nno devices found!");
+            tvAppend(textView, "\nNo devices found!");
         }
 
 
@@ -163,7 +248,7 @@ public class UploadingData extends Activity {
     public void onClickSend(View view) {
         String string = "upload";
         serialPort.write(string.getBytes());
-        tvAppend(textView, "\n<sending upload command>" + string + "\n");
+        tvAppend(textView, "\n<Sending upload command>" + string + "\n");
 
     }
 

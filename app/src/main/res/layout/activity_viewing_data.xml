@@ -1,11 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="#FFF9FB"
-tools:context=".ViewingData">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF9FB"
+    tools:context=".ViewingData">
+
+
+    <Button
+        android:id="@+id/TotalNumberSteps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="112dp"
+        android:text="Total Number Steps"
+        app:backgroundTint="#E91E63"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/TotalSessionsTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="76dp"
+        android:text="Total Session Time"
+        app:backgroundTint="#E91E63"
+        app:layout_constraintBottom_toTopOf="@+id/TotalNumberSteps"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/TotalLeftArmsSwings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="100dp"
+        android:text="Total Left Arm Swings"
+        app:backgroundTint="#E91E63"
+        app:layout_constraintBottom_toTopOf="@+id/TotalSessionsTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/TotalRightArmsSwings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginRight="96dp"
+        android:layout_marginBottom="28dp"
+        android:text="Total Right Arm Swings"
+        app:backgroundTint="#E91E63"
+        app:layout_constraintBottom_toTopOf="@+id/TotalLeftArmsSwings"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/AverageFeetWidth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="84dp"
+        android:text="Average Feet Width"
+        app:backgroundTint="#E91E63"
+        app:layout_constraintBottom_toTopOf="@+id/TotalRightArmsSwings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="343dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="140dp"
+        android:editable="false"
+        android:ems="10"
+        android:filterTouchesWhenObscured="true"
+        android:focusableInTouchMode="false"
+        android:inputType="textPersonName"
+        android:text="Sessions Data"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/AverageFeetWidth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.235"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintVertical_bias="0.461"
+        tools:ignore="MissingConstraints" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -25,30 +120,7 @@ tools:context=".ViewingData">
             />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <Button
-        android:id="@+id/btnBarChart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginTop="284dp"
-        android:text="Bar Chart Sessions"
-        app:backgroundTint="#E91E63"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="114dp" />
-
-    <Button
-        android:id="@+id/btnPieChart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Pie Chart Sessions"
-        app:backgroundTint="#E91E63"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnBarChart"
-        app:layout_constraintVertical_bias="0.147"
-        tools:layout_editor_absoluteX="10dp" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

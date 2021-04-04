@@ -7,7 +7,12 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.GAS.NoActionBar">
-        <activity android:name=".PieChartActivity"></activity>
+        <activity android:name=".AverageWidtheachActivity" />
+        <activity android:name=".BarTotalLeftWingsActivity" />
+        <activity android:name=".BarTotalRightWingsActivity" />
+        <activity android:name=".BarStepsActivity" />
+        <activity android:name=".BarTotaltimeActivity" />
+        <activity android:name=".PieChartActivity" />
         <activity android:name=".BarChartActivity" />
         <activity android:name=".UploadingData" />
         <activity android:name=".ViewingData" />
